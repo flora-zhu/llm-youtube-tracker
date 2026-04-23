@@ -174,8 +174,12 @@ for channel_id in CHANNELS:
         all_rows.append({**video, "summary": summary, "topics": topics})
 
 html = build_html(all_rows)
-with open("dashboard.html", "w", encoding="utf-8") as f:
+with open("index.html", "w", encoding="utf-8") as f:
     f.write(html)
 
-print("\nDone! Open dashboard.html in your browser.")
+print("\nDone! Open index.html in your browser.")
 
+import subprocess
+subprocess.run(["git", "add", "index.html"], shell=True)
+subprocess.run(["git", "commit", "-m", "update dashboard"], shell=True)
+subprocess.run(["git", "push"], shell=True)
