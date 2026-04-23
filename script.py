@@ -1,7 +1,12 @@
 import requests
 from googleapiclient.discovery import build
 from youtube_transcript_api import YouTubeTranscriptApi, NoTranscriptFound, TranscriptsDisabled
-from config import YOUTUBE_API_KEY, GROQ_API_KEY
+import os
+try:
+    from config import YOUTUBE_API_KEY, GROQ_API_KEY
+except ImportError:
+    YOUTUBE_API_KEY = os.environ.get("YOUTUBE_API_KEY")
+    GROQ_API_KEY = os.environ.get("GROQ_API_KEY")
 import json
 import time
 
